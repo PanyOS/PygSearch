@@ -9,7 +9,7 @@ class Configure:
         self.app_id = "org.freeinternet.searchapp"
         self.app_logo_icon_name = "system-search"
         self.app_version = "0.0.1"
-        self.app_website = "https://github.com/cboxdoerfer/fsearch"
+        self.app_website = "https://github.com/PanyOS/PygSearch"
         self.app_copyright = "PanyOS"
         self.app_website_label = "PygSearch for everything search"
         self.app_license = Gtk.License.GPL_2_0
