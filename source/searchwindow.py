@@ -136,10 +136,10 @@ class SearchApplicationWindow(Gtk.ApplicationWindow, TreeViewCommon):
         self.copy_treeview()
 
     def open_callback(self, action, parameter):
-        print("open")
+        self.open_treeview()
 
     def open_path_callback(self, action, parameter):
-        print("open path")
+        self.open_path_treeview()
 
     def on_window_delete_event(self, widget, event):
         if self.thread_notifier:

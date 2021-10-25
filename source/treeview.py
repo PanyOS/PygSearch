@@ -1,7 +1,7 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, Pango
+from gi.repository import Gtk, Gio, Gdk, Pango
 
 PATTERN_OPTIONS = ("Match Simple", "Match Case", "Match Whole Word", "Match Regex")
 OBJECT_OPTIONS = ("Match Name", "Match Path")
@@ -194,7 +194,26 @@ class TreeViewCommon:
             self.clipboard.set_text(value, -1)
 
     def open_treeview(self):
-        pass
+        model = self.treeview.get_model()
+        treeiter = self.get_treeiter()
+
+        if treeiter:
+            value = model.get_value(treeiter, 2)
+            gfile = Gio.File.new_for_path(value)
+            uri = gfile.get_uri()
+
+            Gtk.show_uri(Gdk.Screen.get_default(),
+                        uri, Gtk.get_current_event_time())
     
     def open_path_treeview(self):
-        pass
+        model = self.treeview.get_model()
+        treeiter = self.get_treeiter()
+
+        if treeiter:
+            value = model.get_value(treeiter, 2)
+            gfile = Gio.File.new_for_path(value)
+            gfile_parent = gfile.get_parent()
+            uri = gfile_parent.get_uri()
+
+            Gtk.show_uri(Gdk.Screen.get_default(),
+                        uri, Gtk.get_current_event_time())
